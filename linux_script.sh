@@ -19,7 +19,7 @@ fi
 cronjob_flag=$2
 
 # function to check processes and move them to background
-check_and_move_to_background() {
+function check_and_move_to_background {
 
     # extract the name of the current script
     script_name=$(basename "$0")
@@ -37,9 +37,9 @@ check_and_move_to_background() {
             if [[ "$start_time" -gt "$duration" ]]; then
 
                 # move the process to background
-                kill -STOP "$pid" 2>/dev/null
+                kill -STOP "$pid"
                 sleep 0.0001
-                kill -CONT "$pid" 2>/dev/null
+                kill -CONT "$pid"
                 echo "Process $pid was has been running for longer than ${duration} seconds. Moved to background"
 
             fi
